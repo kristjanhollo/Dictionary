@@ -15,7 +15,7 @@ public class Dictionary {
         dictionaryWords.put(word,wordToTranslate);
     }
 
-    public boolean wordExist(String wordToSearch) {
+    private boolean wordExist(String wordToSearch) {
         for(String word : dictionaryWords.keySet()) {
             if(wordToSearch.equals(word)) {
                 return true;
@@ -24,11 +24,36 @@ public class Dictionary {
         return false;
     }
 
+    public void listAllEntrys() {
+        if (dictionaryWords.size() != 0) {
+            dictionaryWords.entrySet()
+                    .forEach(e -> System.out.println(e.getKey() + " -> " + e.getValue()));
+        } else {
+            System.out.println("Dictionary is empty");
+        }
+    }
+
+    public void replaceWord(String oldEntry, String newEntry) {
+        if(wordExist(oldEntry)) {
+            dictionaryWords.replace(oldEntry,newEntry);
+        } else {
+            System.out.println("No such entry in dictionary");
+        }
+    }
+
     public void searchWord(String wordToSearch) {
         if(wordExist(wordToSearch)) {
             System.out.println(wordToSearch + " translates to " + dictionaryWords.get(wordToSearch));
         } else {
             System.out.println("Sorry , no such word in dictionary");
         }
+    }
+
+    public void test(String wordToSearch) {
+        dictionaryWords.entrySet()
+                .stream()
+                .filter(a -> a.getKey().equals(wordToSearch))
+                .forEach(a -> System.out.println(a.getKey() + " -> " + a.getValue()));
+
     }
 }
