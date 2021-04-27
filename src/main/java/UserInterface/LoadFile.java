@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class LoadFile {
-    private static Scanner scanner = new Scanner(System.in);
+    private static final Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
 
         Dictionary dictionary = new Dictionary();
@@ -17,7 +17,6 @@ public class LoadFile {
 
 
     static void menu(Dictionary dictionary) {
-        String fileToLoad = "";
         boolean run = true;
         while (run) {
 
@@ -30,24 +29,16 @@ public class LoadFile {
 
             String input = scanner.nextLine().toUpperCase();
             switch (input) {
-                case "1":
-                    filesInFolder();
-                    break;
-                case "2":
-                    System.out.print("File to read: ");
-                    fileToLoad = scanner.nextLine();
-                    if(searchWord(fileToLoad + ".txt", dictionary)) {
-                        loadedDictionariesMenu(fileToLoad, dictionary);
-                }
-                    break;
-                case "3":
-                    run = false;
-                    break;
-                case "Q":
-                    System.exit(0);
+                case "1" -> filesInFolder();
+                case "2" -> fileToRead(dictionary);
+                case "3" -> run = false;
+                case "Q" -> System.exit(0);
+                default -> System.out.println("Safe case");
             }
         }
     }
+
+
 
 
     private static void loadedDictionariesMenu(String fileToLoad, Dictionary dictionary) {
@@ -63,43 +54,48 @@ public class LoadFile {
             String input = scanner.nextLine().toUpperCase();
 
             switch (input) {
-                case "1":
-                    dictionary.listAllEntrys();
-                    break;
-                case "2":
-                    System.out.println("Word to translate: ");
-                    String wordToTranslate = scanner.nextLine().toLowerCase();
-                    dictionary.searchWord(wordToTranslate);
-                    break;
-
-                case "3":
-                    System.out.println("Word to replace: ");
-                    String wordToReplace = scanner.nextLine();
-                    System.out.println("New word: ");
-                    String newWord = scanner.nextLine();
-                    System.out.println("New translation");
-                    String newTranslation = scanner.nextLine();
-                    break;
-
-                case "4":
+                case "1" -> dictionary.listAllEntrys();
+                case "2" -> wordToTranslate(dictionary);
+//                case "3" -> {
+//                    System.out.println("Word to replace: ");
+//                    String wordToReplace = scanner.nextLine();
+//                    System.out.println("New word: ");
+//                    String newWord = scanner.nextLine();
+//                    System.out.println("New translation");
+//                    String newTranslation = scanner.nextLine();
+//                }
+                case "4" -> {
                     System.out.println("English word to add: ");
                     String newWordAdd = scanner.nextLine();
-                    if(dictionary.wordExist(newWordAdd)) {
+                    if (dictionary.wordExist(newWordAdd)) {
                         System.out.println("Word exists already");
                         System.out.println("Returning to menu");
                     } else {
                         System.out.println("translation: ");
                         String newEstonian = scanner.nextLine();
-                        dictionary.addWord(newWordAdd,newEstonian);
-                        saveFile(newWordAdd,newEstonian, fileToLoad);
+                        dictionary.addWord(newWordAdd, newEstonian);
+                        saveFile(newWordAdd, newEstonian, fileToLoad);
                     }
-                    break;
-                case "5":
-                    run = false;
-                    break;
-                case "Q":
-                    System.exit(0);
+                }
+                case "5" -> run = false;
+                case "Q" -> System.exit(0);
+                default -> System.out.println("Safe case");
             }
+        }
+    }
+
+    private static void wordToTranslate(Dictionary dictionary) {
+        System.out.println("Word to translate: ");
+        String wordToTranslate = scanner.nextLine().toLowerCase();
+        dictionary.searchWord(wordToTranslate);
+    }
+
+    private static void fileToRead(Dictionary dictionary) {
+        String fileToLoad;
+        System.out.print("File to read: ");
+        fileToLoad = scanner.nextLine();
+        if (searchWord(fileToLoad + ".txt", dictionary)) {
+            loadedDictionariesMenu(fileToLoad, dictionary);
         }
     }
 

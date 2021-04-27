@@ -5,3 +5,4 @@ smoke suits
 phone telefon
 keyboard klaviatuur
 ruler joonlaud
+bike ratas
