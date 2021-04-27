@@ -10,7 +10,7 @@ public class UserInterface {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Dictionary dictionary = new Dictionary();
-
+        drawBook();
         boolean run = true;
         while(run) {
 
@@ -34,6 +34,17 @@ public class UserInterface {
         System.out.println("2 - load an existing dictionary");
         System.out.println("Q - to quit program");
         System.out.println("___________________________\n");
+    }
+
+    static void drawBook() {
+        System.out.println("""
+                       __...--~~~~~-._   _.-~~~~~--...__
+                    //               `V'               \\\\\s
+                   //                 |                 \\\\\s
+                  //__...--~~~~~~-._  |  _.-~~~~~~--...__\\\\\s
+                 //__.....----~~~~._\\ | /_.~~~~----.....__\\\\
+                ====================\\\\|//====================
+                               \s""");
     }
 }
 

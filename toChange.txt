@@ -1,0 +1,14 @@
+1 - check methods - make it simple
+2 - add file maker
+3 - rename files / methods
+4 - list by first letter
+5 - regex find
+6 - date added file?
+7 - replace old translation with new one - overwrite!
+8 - make it beautiful
+9 - reverse search? english - estonian - english
+10 - make Finnish - estonian! 👌
+11 - build UI?! - need to learn
+12 - write automated tests?!
+13 - most searched word?
+14 -

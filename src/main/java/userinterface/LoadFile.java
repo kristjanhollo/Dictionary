@@ -99,10 +99,10 @@ public class LoadFile {
         }
     }
 
-    private static void saveFile(String word, String word2, String fileToLoad) {
-        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("DictionariesCollection\\" + fileToLoad + ".txt", true))) {
+    private static void saveFile(String englishWord, String estonianWord, String fileName) {
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("DictionariesCollection\\" + fileName + ".txt", true))) {
             bufferedWriter.newLine();
-            bufferedWriter.append(word).append(" ").append(word2);
+            bufferedWriter.append(englishWord).append(" ").append(estonianWord);
         } catch (IOException e) {
             System.out.println("Error");
             e.printStackTrace();
@@ -121,24 +121,24 @@ public class LoadFile {
     private static void filesInFolder() {
         System.out.println("Existing dictionaries:\n");
         File f = new File("DictionariesCollection\\");
-        String[] pathnames = f.list((f1, name) -> name.endsWith(".txt"));
-        if (pathnames != null) {
-            Arrays.stream(pathnames).forEach(e -> System.out.println(e.toUpperCase().substring(0, e.length() - 4)));
+        String[] dictionaryNames = f.list((f1, name) -> name.endsWith(".txt"));
+        if (dictionaryNames != null) {
+            Arrays.stream(dictionaryNames).forEach(e -> System.out.println(e.toUpperCase().substring(0, e.length() - 4)));
         } else {
             System.out.println("No existing dictionaries");
         }
     }
 
-    private static boolean loadFile(String fileToLoad, Dictionary dictionary) {
+    private static boolean loadFile(String fileName, Dictionary dictionary) {
 
-        try(Scanner readLines = new Scanner(Path.of("DictionariesCollection\\" + fileToLoad))) {
+        try(Scanner readLines = new Scanner(Path.of("DictionariesCollection\\" + fileName))) {
             while(readLines.hasNext()) {
                 String[] lines = readLines.nextLine().toLowerCase().split(" ");
                 dictionary.addWord(lines[0],lines[1]);
             }
 
         } catch (IOException e) {
-            System.out.println(fileToLoad.substring(0,fileToLoad.length()-4).toUpperCase() + " dictionary not found");
+            System.out.println(fileName.substring(0,fileName.length()-4).toUpperCase() + " dictionary not found");
             return false;
         }
         return true;
