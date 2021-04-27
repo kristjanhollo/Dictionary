@@ -3,19 +3,22 @@ package Dictionary;
 import java.util.HashMap;
 
 public class Dictionary {
-    private String firstWord;
-    private String secondWord;
     private HashMap<String, String> dictionaryWords;
 
     public Dictionary() {
         this.dictionaryWords = new HashMap<>();
     }
 
+
     public void addWord(String word, String wordToTranslate) {
-        dictionaryWords.put(word,wordToTranslate);
+        if (wordExist(word)) {
+            System.out.println("Word already exists");
+        } else {
+            dictionaryWords.put(word,wordToTranslate);
+        }
     }
 
-    private boolean wordExist(String wordToSearch) {
+    public boolean wordExist(String wordToSearch) {
         for(String word : dictionaryWords.keySet()) {
             if(wordToSearch.equals(word)) {
                 return true;
@@ -26,8 +29,10 @@ public class Dictionary {
 
     public void listAllEntrys() {
         if (dictionaryWords.size() != 0) {
+            System.out.println("-------------------------------------");
             dictionaryWords.entrySet()
                     .forEach(e -> System.out.println(e.getKey() + " -> " + e.getValue()));
+            System.out.println("-------------------------------------");
         } else {
             System.out.println("Dictionary is empty");
         }
@@ -56,4 +61,5 @@ public class Dictionary {
                 .forEach(a -> System.out.println(a.getKey() + " -> " + a.getValue()));
 
     }
+
 }

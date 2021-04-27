@@ -2,3 +2,6 @@ car auto
 table laud
 clock kell
 smoke suits
+phone telefon
+keyboard klaviatuur
+ruler joonlaud

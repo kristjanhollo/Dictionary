@@ -1,12 +1,15 @@
 package UserInterface;
 
 
+import Dictionary.Dictionary;
+
 import java.util.Scanner;
 
 public class ReadFile {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+         Dictionary dictionary = new Dictionary();
 
 
         boolean run = true;
@@ -19,12 +22,11 @@ public class ReadFile {
 
             switch (menuOption) {
                 case "1":
-                    System.out.println("Option 1");
+                    System.out.println(dictionary);
                     break;
                 case "2":
-                    LoadFile.menu();
-                    break;
-
+                    LoadFile.menu(dictionary);
+                    continue;
                 case "Q":
                     run = false;
                     break;

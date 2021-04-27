@@ -2,27 +2,23 @@ package UserInterface;
 
 import Dictionary.Dictionary;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Path;
-import java.sql.SQLOutput;
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class LoadFile {
     private static Scanner scanner = new Scanner(System.in);
-    private static boolean run = true;
-
     public static void main(String[] args) {
-        menu();
+
+        Dictionary dictionary = new Dictionary();
+        menu(dictionary);
     }
 
 
-    static void menu() {
-
-
-
+    static void menu(Dictionary dictionary) {
+        String fileToLoad = "";
+        boolean run = true;
         while (run) {
 
             System.out.println("-----------------------");
@@ -39,8 +35,10 @@ public class LoadFile {
                     break;
                 case "2":
                     System.out.print("File to read: ");
-                    String fileToLoad = scanner.nextLine();
-                    loadFile(fileToLoad + ".txt");
+                    fileToLoad = scanner.nextLine();
+                    if(searchWord(fileToLoad + ".txt", dictionary)) {
+                        loadedDictionariesMenu(fileToLoad, dictionary);
+                }
                     break;
                 case "3":
                     run = false;
@@ -51,7 +49,81 @@ public class LoadFile {
         }
     }
 
-    static void filesInFolder() {
+
+    private static void loadedDictionariesMenu(String fileToLoad, Dictionary dictionary) {
+        boolean run = true;
+        while (run) {
+            System.out.println("1 - to list all translations");
+            System.out.println("2 - to search for a translation");
+            System.out.println("3 - to replace a word");
+            System.out.println("4 - to add a new word");
+            System.out.println("5 - to go back");
+            System.out.println("Q - to quit");
+
+            String input = scanner.nextLine().toUpperCase();
+
+            switch (input) {
+                case "1":
+                    dictionary.listAllEntrys();
+                    break;
+                case "2":
+                    System.out.println("Word to translate: ");
+                    String wordToTranslate = scanner.nextLine().toLowerCase();
+                    dictionary.searchWord(wordToTranslate);
+                    break;
+
+                case "3":
+                    System.out.println("Word to replace: ");
+                    String wordToReplace = scanner.nextLine();
+                    System.out.println("New word: ");
+                    String newWord = scanner.nextLine();
+                    System.out.println("New translation");
+                    String newTranslation = scanner.nextLine();
+                    break;
+
+                case "4":
+                    System.out.println("English word to add: ");
+                    String newWordAdd = scanner.nextLine();
+                    if(dictionary.wordExist(newWordAdd)) {
+                        System.out.println("Word exists already");
+                        System.out.println("Returning to menu");
+                    } else {
+                        System.out.println("translation: ");
+                        String newEstonian = scanner.nextLine();
+                        dictionary.addWord(newWordAdd,newEstonian);
+                        saveFile(newWordAdd,newEstonian, fileToLoad);
+                    }
+                    break;
+                case "5":
+                    run = false;
+                    break;
+                case "Q":
+                    System.exit(0);
+            }
+        }
+    }
+
+    private static void saveFile(String word, String word2, String fileToLoad) {
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("DictionariesCollection\\" + fileToLoad + ".txt", true))) {
+            bufferedWriter.newLine();
+            bufferedWriter.append(word).append(" ").append(word2);
+        } catch (IOException e) {
+            System.out.println("Error");
+            e.printStackTrace();
+        }
+    }
+
+    private static boolean searchWord(String fileToLoad, Dictionary dictionary) {
+        if(loadFile(fileToLoad, dictionary)) {
+            System.out.println("Dictionary "+ fileToLoad.toUpperCase().substring(0 ,fileToLoad.length() - 4) + " has been successfully loaded");
+            return true;
+        }
+        return false;
+    }
+
+
+    private static void filesInFolder() {
+        System.out.println("Existing dictionaries:\n");
         File f = new File("DictionariesCollection\\");
         String[] pathnames = f.list((f1, name) -> name.endsWith(".txt"));
         if (pathnames != null) {
@@ -61,20 +133,18 @@ public class LoadFile {
         }
     }
 
+    private static boolean loadFile(String fileToLoad, Dictionary dictionary) {
 
-    static void loadFile(String fileToLoad) {
-        Dictionary dictionary = new Dictionary();
         try(Scanner readLines = new Scanner(Path.of("DictionariesCollection\\" + fileToLoad))) {
             while(readLines.hasNext()) {
                 String[] lines = readLines.nextLine().toLowerCase().split(" ");
                 dictionary.addWord(lines[0],lines[1]);
             }
-        } catch (FileNotFoundException e) {
-            System.out.println("File not found");
+
         } catch (IOException e) {
-            System.out.println("Error");
+            System.out.println(fileToLoad.substring(0,fileToLoad.length()-4).toUpperCase() + " dictionary not found");
+            return false;
         }
-        System.out.println("Dictionary "+ fileToLoad.toUpperCase().substring(0 ,fileToLoad.length() - 4) + " has been successfully loaded");
-        dictionary.listAllEntrys();
+        return true;
     }
 }
