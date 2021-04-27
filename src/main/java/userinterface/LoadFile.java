@@ -52,7 +52,7 @@ public class LoadFile {
 
 
             switch (scanner.nextLine().toUpperCase()) {
-                case "1" -> dictionary.listAllEntrys();
+                case "1" -> dictionary.listAllEntries();
                 case "2" -> wordToTranslate(dictionary);
 //      To-do          case "3" -> {
 //                    System.out.println("Word to replace: ");

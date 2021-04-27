@@ -3,7 +3,7 @@ package dictiontary;
 import java.util.HashMap;
 
 public class Dictionary {
-    private HashMap<String, String> dictionaryWords;
+    private final HashMap<String, String> dictionaryWords;
 
     public Dictionary() {
         this.dictionaryWords = new HashMap<>();
@@ -27,7 +27,7 @@ public class Dictionary {
         return false;
     }
 
-    public void listAllEntrys() {
+    public void listAllEntries() {
         if (dictionaryWords.size() != 0) {
             System.out.println("-------------------------------------");
             dictionaryWords.entrySet()
@@ -38,13 +38,13 @@ public class Dictionary {
         }
     }
 
-    public void replaceWord(String oldEntry, String newEntry) {
-        if(wordExist(oldEntry)) {
-            dictionaryWords.replace(oldEntry,newEntry);
-        } else {
-            System.out.println("No such entry in dictionary");
-        }
-    }
+//    public void replaceWord(String oldEntry, String newEntry) { // To-do
+//        if(wordExist(oldEntry)) {
+//            dictionaryWords.replace(oldEntry,newEntry);
+//        } else {
+//            System.out.println("No such entry in dictionary");
+//        }
+//    }
 
     public void searchWord(String wordToSearch) {
         if(wordExist(wordToSearch)) {
@@ -52,14 +52,6 @@ public class Dictionary {
         } else {
             System.out.println("Sorry , no such word in dictionary");
         }
-    }
-
-    public void test(String wordToSearch) {
-        dictionaryWords.entrySet()
-                .stream()
-                .filter(a -> a.getKey().equals(wordToSearch))
-                .forEach(a -> System.out.println(a.getKey() + " -> " + a.getValue()));
-
     }
 
 }
