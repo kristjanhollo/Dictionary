@@ -5,10 +5,10 @@ Create a new dictionary: When the dictionary is created, it should be created as
 stored on a local disk (so that after restarting program, client will be able to "load the existing dictionary").
 Everything that you'll enter into a dictionary will be stored in a file;
 
-Load the existing Dictionary: loading the dictionary should be possible by file name -> user is prompted to enter a file name to be loaded, and corresponding file is loaded into Java application's memory (you read the data from file and store it somewhere).. 
+Load the existing dictiontary: loading the dictionary should be possible by file name -> user is prompted to enter a file name to be loaded, and corresponding file is loaded into Java application's memory (you read the data from file and store it somewhere).. 
 
 Notice, that multiple files can exist;
-When the user creates OR loads the dictionary, better to display a informative dialogue message, like: "Dictionary X has been created" or "Dictionary X has been successfully loaded", after which, user should have available two options:
+When the user creates OR loads the dictionary, better to display a informative dialogue message, like: "dictiontary X has been created" or "dictiontary X has been successfully loaded", after which, user should have available two options:
 
 Display entire dictionary;
 

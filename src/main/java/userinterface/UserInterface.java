@@ -1,20 +1,18 @@
-package UserInterface;
+package userinterface;
 
 
-import Dictionary.Dictionary;
+import dictiontary.Dictionary;
 
 import java.util.Scanner;
 
-public class ReadFile {
+public class UserInterface {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-         Dictionary dictionary = new Dictionary();
-
+        Dictionary dictionary = new Dictionary();
 
         boolean run = true;
         while(run) {
-
 
             menu();
 
@@ -25,8 +23,6 @@ public class ReadFile {
                 case "2" -> LoadFile.menu(dictionary);
                 case "Q" -> run = false;
                 default -> System.out.println("Wrong input, please choose from menu: ");
-
-
             }
         }
 
@@ -39,7 +35,5 @@ public class ReadFile {
         System.out.println("Q - to quit program");
         System.out.println("___________________________\n");
     }
-
-
-
 }
+

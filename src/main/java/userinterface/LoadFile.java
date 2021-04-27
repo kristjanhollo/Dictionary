@@ -1,6 +1,6 @@
-package UserInterface;
+package userinterface;
 
-import Dictionary.Dictionary;
+import dictiontary.Dictionary;
 
 import java.io.*;
 import java.nio.file.Path;
@@ -27,8 +27,7 @@ public class LoadFile {
             System.out.println("Q - to quit program");
 
 
-            String input = scanner.nextLine().toUpperCase();
-            switch (input) {
+            switch (scanner.nextLine().toUpperCase()) {
                 case "1" -> filesInFolder();
                 case "2" -> fileToRead(dictionary);
                 case "3" -> run = false;
@@ -51,9 +50,8 @@ public class LoadFile {
             System.out.println("5 - to go back");
             System.out.println("Q - to quit");
 
-            String input = scanner.nextLine().toUpperCase();
 
-            switch (input) {
+            switch (scanner.nextLine().toUpperCase()) {
                 case "1" -> dictionary.listAllEntrys();
                 case "2" -> wordToTranslate(dictionary);
 //                case "3" -> {
@@ -64,23 +62,25 @@ public class LoadFile {
 //                    System.out.println("New translation");
 //                    String newTranslation = scanner.nextLine();
 //                }
-                case "4" -> {
-                    System.out.println("English word to add: ");
-                    String newWordAdd = scanner.nextLine();
-                    if (dictionary.wordExist(newWordAdd)) {
-                        System.out.println("Word exists already");
-                        System.out.println("Returning to menu");
-                    } else {
-                        System.out.println("translation: ");
-                        String newEstonian = scanner.nextLine();
-                        dictionary.addWord(newWordAdd, newEstonian);
-                        saveFile(newWordAdd, newEstonian, fileToLoad);
-                    }
-                }
+                case "4" -> addNewWordToDictionary(fileToLoad, dictionary);
                 case "5" -> run = false;
                 case "Q" -> System.exit(0);
                 default -> System.out.println("Safe case");
             }
+        }
+    }
+
+    private static void addNewWordToDictionary(String fileToLoad, Dictionary dictionary) {
+        System.out.println("English word to add: ");
+        String newWordAdd = scanner.nextLine();
+        if (dictionary.wordExist(newWordAdd)) {
+            System.out.println("Word exists already");
+            System.out.println("Returning to menu");
+        } else {
+            System.out.println("translation: ");
+            String newEstonian = scanner.nextLine();
+            dictionary.addWord(newWordAdd, newEstonian);
+            saveFile(newWordAdd, newEstonian, fileToLoad);
         }
     }
 
@@ -111,7 +111,7 @@ public class LoadFile {
 
     private static boolean searchWord(String fileToLoad, Dictionary dictionary) {
         if(loadFile(fileToLoad, dictionary)) {
-            System.out.println("Dictionary "+ fileToLoad.toUpperCase().substring(0 ,fileToLoad.length() - 4) + " has been successfully loaded");
+            System.out.println("Dictionary " + fileToLoad.toUpperCase().substring(0 ,fileToLoad.length() - 4) + " has been successfully loaded");
             return true;
         }
         return false;
