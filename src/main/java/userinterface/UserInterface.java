@@ -29,7 +29,6 @@ public class UserInterface {
     }
 
     static void menu() {
-        System.out.println("Welcome to dictionary!");
         System.out.println("1 - make a new dictionary");
         System.out.println("2 - load an existing dictionary");
         System.out.println("Q - to quit program");
@@ -45,6 +44,8 @@ public class UserInterface {
                  //__.....----~~~~._\\ | /_.~~~~----.....__\\\\
                 ====================\\\\|//====================
                                \s""");
+
+        System.out.println("Welcome to dictionary!");
     }
 }
 
