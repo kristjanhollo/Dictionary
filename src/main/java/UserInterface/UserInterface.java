@@ -21,20 +21,12 @@ public class ReadFile {
             String menuOption = scanner.nextLine().toUpperCase();
 
             switch (menuOption) {
-                case "1":
-                    System.out.println(dictionary);
-                    break;
-                case "2":
-                    LoadFile.menu(dictionary);
-                    continue;
-                case "Q":
-                    run = false;
-                    break;
+                case "1" -> System.out.println(dictionary);
+                case "2" -> LoadFile.menu(dictionary);
+                case "Q" -> run = false;
+                default -> System.out.println("Wrong input, please choose from menu: ");
 
-                default:
-                    System.out.println("Wrong input, please choose from menu: ");
-                    menu();
-                    break;
+
             }
         }
 
@@ -45,8 +37,7 @@ public class ReadFile {
         System.out.println("1 - make a new dictionary");
         System.out.println("2 - load an existing dictionary");
         System.out.println("Q - to quit program");
-        System.out.println("___________________________");
-        System.out.println("");
+        System.out.println("___________________________\n");
     }
 
 

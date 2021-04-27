@@ -6,3 +6,4 @@ phone telefon
 keyboard klaviatuur
 ruler joonlaud
 bike ratas
+cards kaardid
