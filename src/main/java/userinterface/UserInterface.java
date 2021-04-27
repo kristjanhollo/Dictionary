@@ -19,7 +19,7 @@ public class UserInterface {
             String menuOption = scanner.nextLine().toUpperCase();
 
             switch (menuOption) {
-                case "1" -> System.out.println(dictionary);
+                case "1" -> System.out.println(dictionary); // to - do
                 case "2" -> LoadFile.menu(dictionary);
                 case "Q" -> run = false;
                 default -> System.out.println("Wrong input, please choose from menu: ");
