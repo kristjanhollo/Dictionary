@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Path;
+import java.sql.SQLOutput;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -18,28 +19,34 @@ public class LoadFile {
     }
 
 
-
-
     static void menu() {
-        System.out.println("-----------------------");
-        System.out.println("1 - to show existing dictionaries");
-        System.out.println("2 - to load dictionary");
+
 
 
         while (run) {
 
-            String input = scanner.nextLine();
+            System.out.println("-----------------------");
+            System.out.println("1 - to show existing dictionaries");
+            System.out.println("2 - to load dictionary");
+            System.out.println("3 - to go back to main menu");
+            System.out.println("Q - to quit program");
+
+
+            String input = scanner.nextLine().toUpperCase();
             switch (input) {
                 case "1":
                     filesInFolder();
                     break;
                 case "2":
+                    System.out.print("File to read: ");
                     String fileToLoad = scanner.nextLine();
-                    loadFile(fileToLoad);
+                    loadFile(fileToLoad + ".txt");
                     break;
-                default:
+                case "3":
                     run = false;
                     break;
+                case "Q":
+                    System.exit(0);
             }
         }
     }

@@ -1,13 +1,6 @@
 package UserInterface;
 
-import Dictionary.Dictionary;
 
-import java.io.*;
-import java.nio.file.Path;
-import java.sql.SQLOutput;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 
 public class ReadFile {
@@ -29,9 +22,7 @@ public class ReadFile {
                     System.out.println("Option 1");
                     break;
                 case "2":
-                    System.out.println("Dictionary to load: ");
-                    String dictionaryToLoad = scanner.nextLine();
-                    LoadFile.loadFile(dictionaryToLoad);
+                    LoadFile.menu();
                     break;
 
                 case "Q":
@@ -44,26 +35,6 @@ public class ReadFile {
                     break;
             }
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     }
 
