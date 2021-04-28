@@ -30,8 +30,7 @@ public class Dictionary {
     public void listAllEntries() {
         if (dictionaryWords.size() != 0) {
             System.out.println("-------------------------------------");
-            dictionaryWords.entrySet()
-                    .forEach(e -> System.out.println(e.getKey() + " -> " + e.getValue()));
+            dictionaryWords.forEach((key, value) -> System.out.println(key + " -> " + value));
             System.out.println("-------------------------------------");
         } else {
             System.out.println("Dictionary is empty");

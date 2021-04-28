@@ -16,9 +16,7 @@ public class UserInterface {
 
             menu();
 
-            String menuOption = scanner.nextLine().toUpperCase();
-
-            switch (menuOption) {
+            switch (scanner.nextLine().toUpperCase()) {
                 case "1" -> System.out.println(dictionary); // to - do
                 case "2" -> LoadFile.menu(dictionary);
                 case "Q" -> run = false;
