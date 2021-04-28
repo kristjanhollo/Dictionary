@@ -12,3 +12,4 @@
 12 - write automated tests?!
 13 - most searched word?
 14 - to print by alphabetical order
+15 - change - no need to load from File all the time?!

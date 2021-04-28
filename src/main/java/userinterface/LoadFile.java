@@ -10,13 +10,6 @@ import java.util.Scanner;
 
 public class LoadFile {
     private static final Scanner scanner = new Scanner(System.in);
-    public static void main(String[] args) {
-
-        Dictionary dictionary = new Dictionary();
-        menu(dictionary);
-    }
-
-
     static void menu(Dictionary dictionary) {
         boolean run = true;
         while (run) {

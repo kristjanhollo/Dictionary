@@ -7,9 +7,9 @@ import java.util.Scanner;
 
 public class UserInterface {
 
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+    public static void startProgram() {
         Dictionary dictionary = new Dictionary();
+        Scanner scanner = new Scanner(System.in);
         drawBook();
         boolean run = true;
         while(run) {

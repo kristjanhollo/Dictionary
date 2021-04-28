@@ -9,7 +9,6 @@ public class Dictionary {
         this.dictionaryWords = new HashMap<>();
     }
 
-
     public void addWord(String word, String wordToTranslate) {
         if (wordExist(word)) {
             System.out.println("Word already exists");
