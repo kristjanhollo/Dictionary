@@ -9,3 +9,4 @@ bike ratas
 cards kaardid
 box kast
 window aken
+battery aku

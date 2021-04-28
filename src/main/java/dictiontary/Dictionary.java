@@ -1,6 +1,10 @@
 package dictiontary;
 
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Dictionary {
     private final HashMap<String, String> dictionaryWords;
@@ -29,7 +33,14 @@ public class Dictionary {
     public void listAllEntries() {
         if (dictionaryWords.size() != 0) {
             System.out.println("-------------------------------------");
-            dictionaryWords.forEach((key, value) -> System.out.println(key + " -> " + value));
+
+            Map<String, String> sortedMap = dictionaryWords
+                    .entrySet()
+                    .stream()
+                    .sorted(Map.Entry.comparingByKey())
+                    .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1,e2) -> e1, LinkedHashMap::new));
+            sortedMap.forEach((key, val) -> System.out.println(key + " -> " + val));
+
             System.out.println("-------------------------------------");
         } else {
             System.out.println("Dictionary is empty");
