@@ -17,10 +17,18 @@ public class UserInterface {
             menu();
 
             switch (scanner.nextLine().toUpperCase()) {
-                case "1" -> System.out.println(dictionary); // to - do
-                case "2" -> LoadFile.menu(dictionary);
-                case "Q" -> run = false;
-                default -> System.out.println("Wrong input, please choose from menu: ");
+                case "1":
+                    System.out.println(dictionary);
+                    break;// to - do
+                case "2":
+                    LoadFile.menu(dictionary);
+                    break;
+                case "Q":
+                    run = false;
+                    break;
+                default:
+                    System.out.println("Wrong input, please choose from menu: ");
+                    break;
             }
         }
 

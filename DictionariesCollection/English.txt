@@ -10,3 +10,5 @@ cards kaardid
 box kast
 window aken
 battery aku
+wallet rahakott
+warehouse ladu

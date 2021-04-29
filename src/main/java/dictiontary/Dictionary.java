@@ -1,6 +1,5 @@
 package dictiontary;
 
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -14,14 +13,23 @@ public class Dictionary {
     }
 
     public void addWord(String word, String wordToTranslate) {
-        if (wordExist(word)) {
-            System.out.println("Word already exists");
+        if (checkForWord(word)) {
+            System.out.println("Word already exists in dictionary");
         } else {
             dictionaryWords.put(word,wordToTranslate);
         }
     }
 
-    public boolean wordExist(String wordToSearch) {
+    public void removeWord(String word) {
+        if(checkForWord(word)) {
+            dictionaryWords.remove(word);
+            System.out.println(word + " has removed from dictionary");
+        } else {
+            System.out.println(word + " not in dictionary");
+        }
+    }
+
+    public boolean checkForWord(String wordToSearch) {
         for(String word : dictionaryWords.keySet()) {
             if(wordToSearch.equals(word)) {
                 return true;
@@ -30,7 +38,7 @@ public class Dictionary {
         return false;
     }
 
-    public void listAllEntries() {
+    public void listFullDictionary() {
         if (dictionaryWords.size() != 0) {
             System.out.println("-------------------------------------");
 
@@ -47,19 +55,11 @@ public class Dictionary {
         }
     }
 
-//    public void replaceWord(String oldEntry, String newEntry) { // To-do
-//        if(wordExist(oldEntry)) {
-//            dictionaryWords.replace(oldEntry,newEntry);
-//        } else {
-//            System.out.println("No such entry in dictionary");
-//        }
-//    }
-
     public void searchWord(String wordToSearch) {
-        if(wordExist(wordToSearch)) {
+        if(checkForWord(wordToSearch)) {
             System.out.println(wordToSearch + " translates to " + dictionaryWords.get(wordToSearch));
         } else {
-            System.out.println("Sorry , no such word in dictionary");
+            System.out.println("Sorry, no such word in dictionary");
         }
     }
 
