@@ -12,3 +12,4 @@ window aken
 battery aku
 wallet rahakott
 warehouse ladu
+mouse hiir
