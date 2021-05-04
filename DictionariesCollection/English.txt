@@ -13,5 +13,4 @@ bike ratas
 mouse hiir
 car auto
 phone telefon
-window aken
 table laud

@@ -18,7 +18,7 @@ public class Dictionary {
 
     public void addWord(String word, String wordToTranslate) {
         if (checkForWord(word)) {
-            System.out.println("Word already exists in dictionary");
+            System.out.println(word + " already exists in dictionary");
         } else {
             dictionaryWords.put(word,wordToTranslate);
         }
@@ -44,7 +44,7 @@ public class Dictionary {
 
     public void listFullDictionary() {
         if (dictionaryWords.size() != 0) {
-            System.out.println("-------------------------------------");
+            System.out.println("――――――――――――――――――――――");
 
             Map<String, String> sortedMap = dictionaryWords
                     .entrySet()
@@ -53,7 +53,7 @@ public class Dictionary {
                     .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1,e2) -> e1, LinkedHashMap::new));
             sortedMap.forEach((key, val) -> System.out.println(key + " -> " + val));
 
-            System.out.println("-------------------------------------");
+            System.out.println("――――――――――――――――――――――");
         } else {
             System.out.println("Dictionary is empty");
         }
@@ -61,9 +61,9 @@ public class Dictionary {
 
     public void searchWord(String wordToSearch) {
         if(checkForWord(wordToSearch)) {
-            System.out.println(wordToSearch + " translates to " + dictionaryWords.get(wordToSearch));
+            System.out.println(wordToSearch + " -> " + dictionaryWords.get(wordToSearch));
         } else {
-            System.out.println("Sorry, no such word in dictionary");
+            System.out.println("Sorry, " + wordToSearch + " not in dictionary");
         }
     }
 

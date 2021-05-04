@@ -70,27 +70,30 @@ public class LoadFile {
     }
 
     private static void printMenu() {
-        System.out.println("-----------------------");
+        System.out.println("――――――――――――――――――――――");
         System.out.println("1 - to show existing dictionaries");
         System.out.println("2 - to load dictionary");
         System.out.println("3 - to go back to main menu");
         System.out.println("Q - to quit program");
+        System.out.println("――――――――――――――――――――――");
     }
 
     private static void displayDictionariesMenu() {
+        System.out.println("――――――――――――――――――――――");
         System.out.println("1 - to list all translations");
         System.out.println("2 - to search for a translation");
         System.out.println("3 - to add a new word");
         System.out.println("4 - to remove a word from dictionary");
         System.out.println("5 - to go back");
         System.out.println("Q - to quit");
+        System.out.println("――――――――――――――――――――――");
     }
 
     private static void addNewWordToDictionary(Dictionary dictionary) {
         System.out.println("English word to add: ");
         String englishWordToAdd = scanner.nextLine();
         if (dictionary.checkForWord(englishWordToAdd)) {
-            System.out.println("Word already exists");
+            System.out.println(englishWordToAdd + " already exists in dictionary");
             System.out.println("Returning to menu");
         } else {
             System.out.println("Translation: ");
@@ -103,14 +106,32 @@ public class LoadFile {
         System.out.println("Word to translate: ");
         String wordToTranslate = scanner.nextLine().toLowerCase();
         dictionary.searchWord(wordToTranslate);
+        boolean run = true;
+        while(run) {
+            System.out.print("Would you like to translate another word? (y/n): ");
+            String input = scanner.nextLine().toLowerCase();
+            switch (input) {
+                case "y", "yes", "ye":
+                    translateWord(dictionary);
+                    break;
+                case "n", "no":
+                    run = false;
+                    break;
+                default:
+                    System.out.println("Wrong input, please choose between y / n");
+                    break;
+            }
+        }
     }
 
 
     private static void removeEntryFromDictionary(Dictionary dictionary) {
         System.out.println("Word to remove from dictionary: ");
-        String wordToRemove = scanner.nextLine();
+        String wordToRemove = scanner.nextLine().toLowerCase();
         if (dictionary.checkForWord(wordToRemove)) {
             dictionary.removeWord(wordToRemove);
+        } else {
+            System.out.println(wordToRemove + " not in dictionary");
         }
     }
 
@@ -171,11 +192,11 @@ public class LoadFile {
     }
 
     private static void displayFilesInSystemFolder() {
-        System.out.println("Existing dictionaries:\n");
+        System.out.print("Existing dictionaries:\n");
         File f = new File("DictionariesCollection\\");
         String[] dictionaryNames = f.list((f1, name) -> name.endsWith(".txt"));
         if (dictionaryNames != null) {
-            Arrays.stream(dictionaryNames).forEach(e -> System.out.println(e.toUpperCase().substring(0, e.length() - 4)));
+            Arrays.stream(dictionaryNames).forEach(e -> System.out.println("-> " + e.toUpperCase().substring(0, e.length() - 4)));
         } else {
             System.out.println("No existing dictionaries");
         }

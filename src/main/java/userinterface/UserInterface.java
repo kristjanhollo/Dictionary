@@ -1,15 +1,14 @@
 package userinterface;
 
 
-import dictiontary.Dictionary;
-
+import java.io.File;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class UserInterface {
+    private static final Scanner scanner = new Scanner(System.in);
 
     public static void startProgram() {
-        Dictionary dictionary = new Dictionary();
-        Scanner scanner = new Scanner(System.in);
         drawBook();
         boolean run = true;
         while(run) {
@@ -18,7 +17,7 @@ public class UserInterface {
 
             switch (scanner.nextLine().toUpperCase()) {
                 case "1":
-                    System.out.println(dictionary);
+                    makeDictionary();
                     break;// to - do
                 case "2":
                     LoadFile.menu();
@@ -38,7 +37,7 @@ public class UserInterface {
         System.out.println("1 - make a new dictionary");
         System.out.println("2 - load an existing dictionary");
         System.out.println("Q - to quit program");
-        System.out.println("___________________________\n");
+        System.out.println("――――――――――――――――――――――");
     }
 
     static void drawBook() {
@@ -51,7 +50,28 @@ public class UserInterface {
                 ====================\\\\|//====================
                                \s""");
 
-        System.out.println("Welcome to dictionary!");
+        System.out.println("Welcome to dictionary!\n");
+    }
+
+    private static void makeDictionary() {
+
+        System.out.print("Name of new dictionary: ");
+        String fileName = scanner.nextLine();
+        File tempFile = new File("DictionariesCollection\\" + fileName + ".txt");
+        if(tempFile.exists()) {
+            System.out.println("Sorry, " + fileName.toUpperCase() + " already exists.");
+        } else {
+            try {
+                File myObj = new File("DictionariesCollection\\" + fileName + ".txt");
+                if (myObj.createNewFile()) {
+                    System.out.println(fileName.toUpperCase() + " has been created!");
+                    System.out.println();
+                }
+            } catch (IOException e) {
+                System.out.println("An error occurred.");
+                e.printStackTrace();
+        }
+    }
     }
 }
 
