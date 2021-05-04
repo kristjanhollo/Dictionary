@@ -13,4 +13,5 @@ bike ratas
 mouse hiir
 car auto
 phone telefon
+pipe toru
 table laud
