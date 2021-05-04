@@ -8,6 +8,10 @@ import java.util.stream.Collectors;
 public class Dictionary {
     private final HashMap<String, String> dictionaryWords;
 
+    public HashMap<String, String> getDictionaryWords() {
+        return dictionaryWords;
+    }
+
     public Dictionary() {
         this.dictionaryWords = new HashMap<>();
     }
@@ -23,7 +27,7 @@ public class Dictionary {
     public void removeWord(String word) {
         if(checkForWord(word)) {
             dictionaryWords.remove(word);
-            System.out.println(word + " has removed from dictionary");
+            System.out.println(word + " has been removed from dictionary");
         } else {
             System.out.println(word + " not in dictionary");
         }

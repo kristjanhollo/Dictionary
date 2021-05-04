@@ -21,7 +21,7 @@ public class UserInterface {
                     System.out.println(dictionary);
                     break;// to - do
                 case "2":
-                    LoadFile.menu(dictionary);
+                    LoadFile.menu();
                     break;
                 case "Q":
                     run = false;
