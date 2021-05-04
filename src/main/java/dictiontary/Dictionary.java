@@ -12,6 +12,8 @@ public class Dictionary {
         return dictionaryWords;
     }
 
+
+
     public Dictionary() {
         this.dictionaryWords = new HashMap<>();
     }
@@ -59,12 +61,11 @@ public class Dictionary {
         }
     }
 
-    public void searchWord(String wordToSearch) {
+    public String searchWord(String wordToSearch) {
         if(checkForWord(wordToSearch)) {
-            System.out.println(wordToSearch + " -> " + dictionaryWords.get(wordToSearch));
-        } else {
-            System.out.println("Sorry, " + wordToSearch + " not in dictionary");
+            return dictionaryWords.get(wordToSearch);
         }
+        return null;
     }
 
 }

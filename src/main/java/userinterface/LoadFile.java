@@ -105,7 +105,11 @@ public class LoadFile {
     private static void translateWord(Dictionary dictionary) {
         System.out.println("Word to translate: ");
         String wordToTranslate = scanner.nextLine().toLowerCase();
-        dictionary.searchWord(wordToTranslate);
+        if(dictionary.checkForWord(wordToTranslate)) {
+            System.out.println(wordToTranslate + " -> " + dictionary.searchWord(wordToTranslate));
+        } else {
+            System.out.println(wordToTranslate + " not in dictionary");
+        }
         boolean run = true;
         while(run) {
             System.out.print("Would you like to translate another word? (y/n): ");
