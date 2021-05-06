@@ -14,7 +14,7 @@ public class UserInterface implements GUI {
             switch (scanner.nextLine().toUpperCase()) {
                 case "1":
                     loadDictionary();
-                    break;// to - do
+                    break;
                 case "2":
                     // TODO: change this
                     DictionaryOperator.menu();

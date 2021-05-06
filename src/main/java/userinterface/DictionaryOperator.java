@@ -1,5 +1,5 @@
 package userinterface;
-import dictiontary.DictionaryMap;
+import dictionary.DictionaryMap;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -46,13 +46,12 @@ public class DictionaryOperator {
                     dictionary.showAllEntries();
                     break;
                 case "2":
-                    System.out.println("Type the word to translate:");
-                    dictionary.translateWord(scanner.nextLine());
+                    DictionaryMap.translateWord(dictionary,scanner);
                     break;
                 case "3":
-                    System.out.println("English word to add: ");
+                    System.out.print("English word to add: ");
                     String englishWord = scanner.nextLine();
-                    System.out.println("Estonian word to add: ");
+                    System.out.print("Estonian word to add: ");
                     String eestiWord = scanner.nextLine();
                     dictionary.addWord(englishWord, eestiWord);
                     saveDictionary(fileToLoad, dictionary);
@@ -74,6 +73,8 @@ public class DictionaryOperator {
             }
         }
     }
+
+
 
     private static void dictionaryToLoad() {
         System.out.print("Dictionary to load: ");

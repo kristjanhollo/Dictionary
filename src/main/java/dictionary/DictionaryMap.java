@@ -1,4 +1,4 @@
-package dictiontary;
+package dictionary;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 
 public class DictionaryMap {
     private final HashMap<String, String> entries;
+    private final Scanner scanner = new Scanner(System.in);
 
     public DictionaryMap() {
         this.entries = new HashMap<>();
@@ -83,7 +84,23 @@ public class DictionaryMap {
         return null;
     }
 
-    public void translateWord(String wordToTranslate) {
+    public static void translateWord(DictionaryMap dictionary, Scanner scanner) {
+        System.out.print("Type the word to translate:");
+        dictionary.translateWord(scanner.nextLine());
+        boolean isTrue = true;
+        while (isTrue) {
+            System.out.print("Would you like to translate another word? (y/n): ");
+            if (scanner.nextLine().toLowerCase().equals("y")) {
+                System.out.print("Type the word to translate:");
+                dictionary.translateWord(scanner.nextLine());
+            } else {
+                isTrue = false;
+                break;
+            }
+        }
+    }
+
+    private void translateWord(String wordToTranslate) {
         if(checkForWord(wordToTranslate.toLowerCase())) {
             System.out.println(wordToTranslate + " -> " + searchWord(wordToTranslate));
         } else {
