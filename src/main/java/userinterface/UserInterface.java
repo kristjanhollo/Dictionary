@@ -16,7 +16,6 @@ public class UserInterface implements GUI {
                     loadDictionary();
                     break;
                 case "2":
-                    // TODO: change this
                     DictionaryOperator.menu();
                     break;
                 case "Q":
@@ -31,20 +30,16 @@ public class UserInterface implements GUI {
     }
 
     public void drawBook() {
-//        System.out.println("
-//                       __...--~~~~~-._   _.-~~~~~--...__
-//                    //               `V'               \\\\\s
-//                   //                 |                 \\\\\s
-//                  //__...--~~~~~~-._  |  _.-~~~~~~--...__\\\\\s
-//                 //__.....----~~~~._\\ | /_.~~~~----.....__\\\\
-//                ====================\\\\|//====================
-//                               \s");
-//
-//        System.out.println("Welcome to dictionary!\n");
+        System.out.println(
+                "         ______ ______\n" +
+                "       _/      Y      \\_\n" +
+                "      // ~~ ~~ | ~~ ~  \\\\\n" +
+                "     // ~ ~ ~~ | ~~~ ~~ \\\\\n" +
+                "    //________.|.________\\\\\n" +
+                "   `----------`-'----------'");
     }
 
     private void loadDictionary() {
-        //TODO: change this
         System.out.print("Name of new dictionary: ");
         String fileName = scanner.nextLine();
         FileLoader.loadFile(fileName);

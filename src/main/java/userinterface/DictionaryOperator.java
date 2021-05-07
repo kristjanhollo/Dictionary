@@ -49,11 +49,7 @@ public class DictionaryOperator {
                     DictionaryMap.translateWord(dictionary,scanner);
                     break;
                 case "3":
-                    System.out.print("English word to add: ");
-                    String englishWord = scanner.nextLine();
-                    System.out.print("Estonian word to add: ");
-                    String eestiWord = scanner.nextLine();
-                    dictionary.addWord(englishWord, eestiWord);
+                    DictionaryMap.addWord(dictionary, scanner);
                     saveDictionary(fileToLoad, dictionary);
                     break;
                 case "4":
@@ -81,7 +77,6 @@ public class DictionaryOperator {
         String fileName = scanner.nextLine();
         if (FileLoader.exists(fileName)) {
             DictionaryMap dictionary = DictionaryMap.builder(fileName);
-            // TODO: can we improve this?
             loadedDictionariesMenu(fileName, dictionary);
         } else {
             System.out.println(fileName.toUpperCase() + " dictionary not found");

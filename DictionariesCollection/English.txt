@@ -1,6 +1,7 @@
 keyboard klaviatuur
 cards kaardid
 cookie küpsis
+king kuningas
 smoke suits
 jacket jakk
 box kast
@@ -14,4 +15,3 @@ mouse hiir
 car auto
 phone telefon
 pipe toru
-table laud

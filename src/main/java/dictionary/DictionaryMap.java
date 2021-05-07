@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 
 public class DictionaryMap {
     private final HashMap<String, String> entries;
-    private final Scanner scanner = new Scanner(System.in);
+    private static final Scanner scanner = new Scanner(System.in);
 
     public DictionaryMap() {
         this.entries = new HashMap<>();
@@ -34,7 +34,20 @@ public class DictionaryMap {
         }
     }
 
-    public void addWord(String word, String wordToTranslate) {
+    public static void addWord(DictionaryMap dictionary, Scanner scanner) {
+        System.out.print("English word to add: ");
+        String englishWord = scanner.nextLine();
+
+        if(dictionary.checkForWord(englishWord)) {
+            System.out.println("Sorry , word already exists in dictionary");
+        } else {
+            System.out.print("Estonian word to add: ");
+            String eestiWord = scanner.nextLine();
+            dictionary.addWord(englishWord, eestiWord);
+        }
+    }
+
+    private void addWord(String word, String wordToTranslate) {
         if (checkForWord(word)) {
             System.out.println(word + " already exists in dictionary");
         } else {
