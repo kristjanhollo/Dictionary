@@ -1,15 +1,15 @@
-1 - check methods - make it simple
-2 - add file maker
-3 - rename files / methods
-4 - list by first letter
-5 - regex find
-6 - date added file?
-7 - replace old translation with new one - overwrite!
-8 - make it beautiful
-9 - reverse search? english - estonian - english
-10 - make Finnish - estonian! 👌
+1 - check methods - make it simple ✔
+2 - add file maker ✔
+3 - rename files / methods ✔
+4 - list by first letter ✔
+5 - regex find - nop
+6 - date added file? - nop
+7 - replace old translation with new one - overwrite! remove / add again ✔
+8 - make it beautiful ✔
+9 - reverse search? english - estonian - english - easy to do - no done
+10 - make Finnish - estonian! ✔ + german ✔
 11 - build UI?! - need to learn
 12 - write automated tests?!
 13 - most searched word?
-14 - to print by alphabetical order
-15 - change - no need to load from File all the time?!
+14 - to print by alphabetical order ✔
+15 - change - no need to load from File all the time?! ✔
